@@ -1,0 +1,10 @@
+.max-min-temp{
+    
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.humid-wind-speed{
+        /* background-color: aqua; */
+}
