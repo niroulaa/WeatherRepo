@@ -5,6 +5,7 @@ import Navbar from "./Component/Navbar";
 
 
 function App() {
+  
   return (
     <div className="App h-[100vh] overflow-hidden " >
       <Navbar />
@@ -16,3 +17,7 @@ function App() {
 }
 
 export default App;
+
+
+
+

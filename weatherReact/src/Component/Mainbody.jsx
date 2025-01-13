@@ -4,21 +4,13 @@ import Sidebody from "./Sidebody";
 import Maincontent from "./Maincontent";
 
 const Mainbody = () => {
-    
-    
-
- 
-
-  return( 
-  <div className="h-[90vh] w-[100vw]  mt-0 flex gap-0">
-    <Sidebody />
-    <Maincontent />
-           
-    
-  </div>
   
-
-  )
+  return (
+    <div className="h-[90vh] w-[100vw]  mt-0 flex gap-0">
+      <Maincontent /> 
+      <Sidebody />
+    </div>
+  );
 };
 
 export default Mainbody;

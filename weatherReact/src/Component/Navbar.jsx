@@ -1,14 +1,14 @@
 import React, { createContext, useReducer, useState } from "react";
 import searchIcon from "./search.png";
-import Mainbody from "./Mainbody";
 import Maincontent from "./Maincontent";
-
+import Mainbody from "./Mainbody";
 export const cityNameContext = createContext({
   cityName: "",
   searchClicked: false,
-  cityChanged: false,
+  // cityChanged: false,
+  enterTrigger:0,
+  
 });
-
 const Navbar = () => {
   function reducer(state, action) {
     switch (action.type) {
@@ -16,13 +16,18 @@ const Navbar = () => {
         return {
           ...state,
           searchClicked: !state.searchClicked,
+
+          
         };
 
       case "city":
         return {
           ...state,
           cityName: action.payload,
-          cityChanged: !state.cityChanged,
+          searchClicked: !state.searchClicked,
+          enterTrigger:state.enterTrigger+1,
+
+          // cityChanged: !state.cityChanged,
         };
 
       default:
@@ -31,26 +36,24 @@ const Navbar = () => {
   }
 
   const [state, dispatch] = useReducer(reducer, {
-    searchClicked: false,
     cityName: "",
-    cityChanged: false,
+    searchClicked: false,
+    // cityChanged: false,
+    enterTrigger: 0,
+
+    
   });
      
 
-  
-
-
-
-
-
-
-
-
-
-
-
-  return (
-    <div className="flex  h-[10vh] w-[100vw]">
+   return (
+    <cityNameContext.Provider value={{
+      cityName: state.cityName,
+      searchClicked: state.searchClicked,
+      // cityChanged: state.cityChanged,   
+      enterTrigger:state.enterTrigger,
+      
+    }} >
+    <div className="flex  h-[10vh] w-[100vw]">   
       <nav className="h-[10vh] w-[100vw] bg-gray-400 flex gap-[19.5vw]">
         <div className="logo h-[fit-content] w-[fit-content] mt-[2.1vh] ml-[1vw]">
           <h1>
@@ -68,8 +71,7 @@ const Navbar = () => {
               onKeyDown={(e) => {
                 if (e.key === "Enter"){
                   dispatch({ type: "city", payload: e.target.value });
-                //  dispatch({type:'citychanged'})
-                // console.log(e.target.value);
+                
                 
                 }
               }}
@@ -106,18 +108,15 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>
-      <cityNameContext.Provider
-        value={{
-          cityName: state.cityName,
-          searchClicked: state.searchClicked,
-          cityChanged: state.cityChanged,
-        }}
-      >
+      
         
-        <Maincontent />
+        </div>
+        <Mainbody/>
+      
+        
       </cityNameContext.Provider>
-    </div>
   );
 };
 
 export default Navbar;
+
