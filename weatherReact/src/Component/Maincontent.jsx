@@ -7,9 +7,8 @@ import Sidebody from "./Sidebody";
 export const weatherContext = React.createContext();
 
 const Maincontent = () => {
-  const { cityName, searchClicked, cityChanged,enterTrigger } = useContext(cityNameContext);
+  const { cityName, enterTrigger, counter } = useContext(cityNameContext);
   const [weatherState, setWeatherState] = React.useState(null);
-
   const [currentTemp, setCurrentTemp] = useState(null);
   const [maxTemp, setMaxTemp] = useState(null);
   const [minTemp, setMinTemp] = useState(null);
@@ -18,26 +17,24 @@ const Maincontent = () => {
   const [feelLike, setFeelLike] = useState(null);
 
   useEffect(() => {
-    if (searchClicked ) {
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=613ea0f65b83816785fb70e79b98c670`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data); // To confirm data is being fetched
-          setCurrentTemp(Math.round(data.main.temp - 273.15));
-          setMaxTemp(Math.round(data.main.temp_max - 273.15));
-          setMinTemp(Math.round(data.main.temp_min - 273.15));
-          setWindSpeed(Math.round(data.wind.speed * 3.6));
-          setHumid(data.main.humidity); // Humidity is a percentage
-          setFeelLike(Math.round(data.main.feels_like - 273.15));
-          setWeatherState(data.weather[0].main);
-        })
-        .catch((error) => {
-          console.log("Error occurred", error);
-        });
-    }
-  }, [searchClicked, cityName]);
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=613ea0f65b83816785fb70e79b98c670`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data); // To confirm data is being fetched
+        setCurrentTemp(Math.round(data.main.temp - 273.15));
+        setMaxTemp(Math.round(data.main.temp_max - 273.15));
+        setMinTemp(Math.round(data.main.temp_min - 273.15));
+        setWindSpeed(Math.round(data.wind.speed * 3.6));
+        setHumid(data.main.humidity); // Humidity is a percentage
+        setFeelLike(Math.round(data.main.feels_like - 273.15));
+        setWeatherState(data.weather[0].main);
+      })
+      .catch((error) => {
+        console.log("Error occurred", error);
+      });
+  }, [counter]);
 
   return (
     <weatherContext.Provider value={weatherState}>
@@ -46,7 +43,7 @@ const Maincontent = () => {
           <div className="place-weather w-[30vw] flex">
             <h1
               className={`text-3xl m-auto ${
-                enterTrigger==0?'hidden':'block'
+                enterTrigger == 0 ? "hidden" : "block"
               }`}
             >
               Today's Weather in {cityName}
