@@ -38,11 +38,12 @@ const Maincontent = () => {
 
   return (
     <weatherContext.Provider value={weatherState}>
-      <div className="weather-details h-[90vh] w-[70vw] bg-gradient-to-r from-neutral-300 to-stone-400 flex flex-col">
+<div className="weather-details w-full md:w-[70%] min-h-[80vh] bg-gradient-to-r from-neutral-300 to-stone-400 flex flex-col">
         <div className="first-div w-[70vw] h-[10vh] flex items-center justify-center">
           <div className="place-weather w-[30vw] flex">
             <h1
-              className={`text-3xl m-auto ${
+              className={`text-xl sm:text-2xl md:text-3xl
+ m-auto ${
                 enterTrigger == 0 ? "hidden" : "block"
               }`}
             >
@@ -53,12 +54,14 @@ const Maincontent = () => {
 
         <div className="second-div h-[20vh] flex justify-around">
           <div className="max-min-temp">
-            <strong className="text-3xl">
+            <strong className="text-xl sm:text-2xl md:text-3xl
+">
               Max Temp: {maxTemp !== null ? `${maxTemp}°C` : "--"}
             </strong>
           </div>
           <div className="max-min-temp">
-            <strong className="text-3xl">
+            <strong className="text-xl sm:text-2xl md:text-3xl
+">
               Min Temp: {minTemp !== null ? `${minTemp}°C` : "--"}
             </strong>
           </div>
@@ -70,7 +73,8 @@ const Maincontent = () => {
               <img src={wind} className="h-[10vh]" alt="Wind" />
             </div>
             <div className="wind-value">
-              <strong className="text-3xl">
+              <strong className="text-xl sm:text-2xl md:text-3xl
+">
                 Wind Speed: {windSpeed !== null ? `${windSpeed} km/h` : "--"}
               </strong>
             </div>
@@ -78,7 +82,8 @@ const Maincontent = () => {
         </div>
 
         <div className="third-div h-[20vh] flex">
-          <strong className="text-3xl m-auto">
+          <strong className="text-xl sm:text-2xl md:text-3xl
+ m-auto">
             Current Temperature:{" "}
             {currentTemp !== null ? `${currentTemp}°C` : "--"}
           </strong>
@@ -90,7 +95,8 @@ const Maincontent = () => {
               <img src={humidity} className="h-[10vh]" alt="Humidity" />
             </div>
             <div className="humid-per">
-              <strong className="text-3xl">
+              <strong className="text-xl sm:text-2xl md:text-3xl
+">
                 Humidity: {humid !== null ? `${humid}%` : "--"}
               </strong>
             </div>
@@ -98,7 +104,8 @@ const Maincontent = () => {
         </div>
 
         <div className="fourth-div h-[20vh] mb-[0vh] flex">
-          <strong className="text-3xl m-auto">
+          <strong className="text-xl sm:text-2xl md:text-3xl
+ m-auto">
             Feels Like: {feelLike !== null ? `${feelLike}°C` : "--"}
           </strong>
         </div>

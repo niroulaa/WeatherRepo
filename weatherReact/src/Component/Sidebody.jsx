@@ -12,7 +12,7 @@ const Sidebody = () => {
   const weatherState = useContext(weatherContext);
 
   return (
-    <div className="weather-icon h-[90vh] w-[30vw] bg-slate-200 flex flex-col gap-0  ">
+<div className="weather-icon w-full md:w-[30%] min-h-[80vh] bg-slate-200 flex flex-col">
       <div className="weather-icon-div  h-[60vh]  flex    bg-gradient-to-r from-slate-300 to-slate-500 ">
         {weatherState === null ? (
           <h1 className="m-auto text-2xl font-bold">
@@ -35,7 +35,7 @@ const Sidebody = () => {
         )}
       </div>
 
-      <div className="cloudyorrainy  h-[30vh] w-[30vw] ">
+      <div className="cloudyorrainy  h-[30vh] w-full ">
         <div className="h-[30vh] w-[30vw] bg-gradient-to-r from-cyan-500 to-blue-500 mt-[0vh] flex   items-center justify-center ">
           <strong
             className={`text-3xl  text-white ${

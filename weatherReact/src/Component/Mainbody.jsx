@@ -1,16 +1,8 @@
-// import React, { createContext, useContext, useEffect } from "react";
-// import { cityNameContext } from "./Navbar";
-import Sidebody from "./Sidebody";
-import Maincontent from "./Maincontent";
-
 const Mainbody = () => {
-  
   return (
-    <div className="h-[90vh] w-[100vw]  mt-0 flex gap-0">
-      <Maincontent /> 
+    <div className="min-h-[90vh] w-full mt-0 flex flex-col md:flex-row gap-0">
+      <Maincontent />
       <Sidebody />
     </div>
   );
 };
-
-export default Mainbody;

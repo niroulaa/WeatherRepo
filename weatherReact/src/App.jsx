@@ -7,9 +7,9 @@ import Navbar from "./Component/Navbar";
 function App() {
   
   return (
-    <div className="App h-[100vh] overflow-hidden " >
+    <div className="App min-h-screen overflow-hidden " >
       <Navbar />
-      <Mainbody />
+    
      
     
      </div>
